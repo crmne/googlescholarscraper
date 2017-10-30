@@ -1,15 +1,28 @@
 import re
+import os
 import scrapy
+
+from dotenv import load_dotenv, find_dotenv
 
 from googlescholar.items import Article
 
 
 class GooglescholarSpider(scrapy.Spider):
     name = 'googlescholar'
-    allowed_domains = ['scholar.google.de']
-    start_urls = [
-        'https://scholar.google.de/scholar?q=((%22deep+learning%22+OR+%22deep+neural+network%22+OR+%22state-of-the-art%22)+AND+(%22genre+recognition%22+OR+%22genre+classification%22))&hl=en&as_sdt=0,5'
-    ]
+    allowed_domains = ['scholar.google.com']
+
+    def __init__(self, category=None, *args, **kwargs):
+        super(GooglescholarSpider, self).__init__(*args, **kwargs)
+
+        dotenv_file = find_dotenv()
+        if dotenv_file:
+            load_dotenv(dotenv_file)
+
+        self.query = os.environ['QUERY']
+        self.start_urls = [
+            'http://scholar.google.com/scholar?q={}&hl=en&as_sdt=0,5'.format(
+                self.query)
+        ]
 
     @staticmethod
     def parse_title(article):
@@ -23,18 +36,24 @@ class GooglescholarSpider(scrapy.Spider):
         return "".join(title_parts).strip()
 
     def parse(self, response):
-        articles = response.xpath('//div[contains(@class, gs_ri)]/*[h3]')
-        for article_dom in articles:
-            article = Article()
-            article['title'] = self.parse_title(article_dom)
+        if 'Server Error' in response.body:
+            raise scrapy.exceptions.IgnoreRequest('Server Error')
 
-            link = article_dom.xpath('h3/a/@href')
+        if "Please show you're not a robot" in response.body:
+            raise scrapy.exceptions.CloseSpider('Identified as robot')
+
+        articles = response.xpath('//div[contains(@class, gs_ri)]/*[h3]')
+        for article_selector in articles:
+            article = Article()
+            article['title'] = self.parse_title(article_selector)
+
+            link = article_selector.xpath('h3/a/@href')
             if link:
                 article['link'] = link.extract()[0]
 
             description = "".join([
                 i.replace('\xa0', '')
-                for i in article_dom.xpath(
+                for i in article_selector.xpath(
                     'div[contains(@class, gs_a)]//text()').extract()
             ])
 
