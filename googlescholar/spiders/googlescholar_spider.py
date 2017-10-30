@@ -1,8 +1,8 @@
-import re
 import os
-import scrapy
+import re
 
-from dotenv import load_dotenv, find_dotenv
+import scrapy
+from dotenv import find_dotenv, load_dotenv
 
 from googlescholar.items import Article
 
@@ -20,8 +20,7 @@ class GooglescholarSpider(scrapy.Spider):
 
         self.query = os.environ['QUERY']
         self.start_urls = [
-            'http://scholar.google.com/scholar?q={}&hl=en&as_sdt=0,5'.format(
-                self.query)
+            'https://scholar.google.com/scholar?q={}'.format(self.query)
         ]
 
     @staticmethod
@@ -36,10 +35,10 @@ class GooglescholarSpider(scrapy.Spider):
         return "".join(title_parts).strip()
 
     def parse(self, response):
-        if 'Server Error' in response.body:
+        if 'Server Error' in response.body.decode():
             raise scrapy.exceptions.IgnoreRequest('Server Error')
 
-        if "Please show you're not a robot" in response.body:
+        if "Please show you're not a robot" in response.body.decode():
             raise scrapy.exceptions.CloseSpider('Identified as robot')
 
         articles = response.xpath('//div[contains(@class, gs_ri)]/*[h3]')
