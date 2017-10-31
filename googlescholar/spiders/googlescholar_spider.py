@@ -19,8 +19,13 @@ class GooglescholarSpider(scrapy.Spider):
             load_dotenv(dotenv_file)
 
         self.query = os.environ['QUERY']
+        if 'START' in os.environ and os.environ['START'] != "":
+            self.start = 'start={}&'.format(os.environ['START'])
+        else:
+            self.start = ''
         self.start_urls = [
-            'https://scholar.google.com/scholar?q={}'.format(self.query)
+            'https://scholar.google.com/scholar?{}q={}&hl=en&as_sdt=0,5'.format(
+                self.start, self.query)
         ]
 
     @staticmethod
