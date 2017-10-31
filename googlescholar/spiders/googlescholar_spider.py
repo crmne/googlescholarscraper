@@ -36,7 +36,12 @@ class GooglescholarSpider(scrapy.Spider):
 
     def parse(self, response):
         if 'Server Error' in response.body.decode():
-            raise scrapy.exceptions.IgnoreRequest('Server Error')
+            raise scrapy.exceptions.IgnoreRequest(
+                'Server Error. Trying next page')
+            url = re.sub(r'start=(\d+)',
+                         lambda x: "start={}".format(int(x.group(1)) + 10),
+                         response.url)
+            yield scrapy.Request(url, callback=self.parse)
 
         if "Please show you're not a robot" in response.body.decode():
             raise scrapy.exceptions.CloseSpider('Identified as robot')
