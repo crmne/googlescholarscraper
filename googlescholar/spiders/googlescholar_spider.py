@@ -71,5 +71,4 @@ class GooglescholarSpider(scrapy.Spider):
         next_page = response.xpath('//a[b[text() = "Next"]]/@href')
         if next_page:
             url = response.urljoin(next_page.extract()[0])
-            yield scrapy.Request(
-                url, callback=self.parse, headers={'referer': response.url})
+            yield scrapy.Request(url, callback=self.parse)
