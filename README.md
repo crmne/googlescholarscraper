@@ -32,7 +32,7 @@ Example
 -------
 
     export QUERY="author:einstein quantum theory"
-    unset START  # makes sure it starts from the beginning
+    unset START  # makes sure it starts from the beginning
     make einstein_quantum.bib
 
 License
