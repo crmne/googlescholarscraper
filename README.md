@@ -25,8 +25,8 @@ Usage
     export QUERY="your query here"
     export START=900  # optional: to start at page 90
     make <output filename>.csv  # or
-    make <output filename>.json  # or
-    make <output filename>.bib
+    make <output filename>.json  # or
+    make <output filename>.bib
 
 Example
 -------
