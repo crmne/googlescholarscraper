@@ -4,29 +4,30 @@
 #
 #    pip-compile --output-file requirements.txt requirements.txt
 #
-asn1crypto==0.23.0        # via cryptography
-attrs==17.2.0             # via automat, service-identity
-automat==0.6.0            # via twisted
-cffi==1.11.2              # via cryptography
-click==6.7                # via python-dotenv
-constantly==15.1.0        # via twisted
-cryptography==2.1.2       # via pyopenssl
-cssselect==1.0.1          # via parsel, scrapy
-hyperlink==17.3.1         # via twisted
-idna==2.6                 # via cryptography
-incremental==17.5.0       # via twisted
-lxml==4.1.0               # via parsel, scrapy
-parsel==1.2.0             # via scrapy
-pyasn1-modules==0.1.5     # via service-identity
-pyasn1==0.3.7             # via pyasn1-modules, service-identity
-pycparser==2.18           # via cffi
-pydispatcher==2.0.5       # via scrapy
-pyopenssl==17.3.0         # via scrapy, service-identity
+asn1crypto==0.23.0
+attrs==17.2.0
+automat==0.6.0
+bibtexparser==0.6.2
+cffi==1.11.2
+click==6.7
+constantly==15.1.0
+cryptography==2.1.2
+cssselect==1.0.1
+hyperlink==17.3.1
+idna==2.6
+incremental==17.5.0
+lxml==4.1.0
+parsel==1.2.0
+pyasn1-modules==0.1.5
+pyasn1==0.3.7
+pycparser==2.18
+pydispatcher==2.0.5
+pyopenssl==17.3.0
 python-dotenv==0.7.1
-queuelib==1.4.2           # via scrapy
+queuelib==1.4.2
 scrapy==1.4.0
-service-identity==17.0.0  # via scrapy
-six==1.11.0               # via automat, cryptography, parsel, pyopenssl, scrapy, w3lib
-twisted==17.9.0           # via scrapy
-w3lib==1.18.0             # via parsel, scrapy
-zope.interface==4.4.3     # via twisted
+service-identity==17.0.0
+six==1.11.0
+twisted==17.9.0
+w3lib==1.18.0
+zope.interface==4.4.3
