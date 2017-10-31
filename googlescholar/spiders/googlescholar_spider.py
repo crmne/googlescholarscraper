@@ -43,7 +43,7 @@ class GooglescholarSpider(scrapy.Spider):
                          response.url)
             yield scrapy.Request(url, callback=self.parse)
 
-        if "Please show you're not a robot" in response.body.decode():
+        if "Please show you&#39;re not a robot" in response.body.decode():
             raise scrapy.exceptions.CloseSpider('Identified as robot')
 
         articles = response.xpath('//div[contains(@class, gs_ri)]/*[h3]')
@@ -53,7 +53,7 @@ class GooglescholarSpider(scrapy.Spider):
 
             link = article_selector.xpath('h3/a/@href')
             if link:
-                article['link'] = link.extract()[0]
+                article['url'] = link.extract()[0]
 
             description = "".join([
                 i.replace('\xa0', '')
@@ -63,7 +63,7 @@ class GooglescholarSpider(scrapy.Spider):
 
             authors_journal = description.split('-')
             if len(authors_journal) > 0:
-                article['authors'] = description.split('-')[0].strip()
+                article['author'] = description.split('-')[0].strip()
             if len(authors_journal) > 1:
                 journal = description.split('-')[1].strip()
                 year = re.match(r"(\d+)", journal.split(', ')[-1])

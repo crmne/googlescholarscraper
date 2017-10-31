@@ -11,11 +11,9 @@ import scrapy
 class Article(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
+    author = scrapy.Field()
     title = scrapy.Field()
-    authors = scrapy.Field()
-    journal = scrapy.Field()
     year = scrapy.Field()
-    description = scrapy.Field()
-    pdflink = scrapy.Field()
-    link = scrapy.Field()
-    biblink = scrapy.Field()
+    journal = scrapy.Field()
+    abstract = scrapy.Field()
+    url = scrapy.Field()
