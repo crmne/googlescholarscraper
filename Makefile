@@ -10,6 +10,9 @@ endif
 requirements:
 	$(PIP) install -r requirements.txt
 
+%.bib.csv: %.bib
+	$(PYTHON_INTERPRETER) convert.py bib2csv $< $@
+
 %.csv: googlescholar/spiders/googlescholar_spider.py
 	FEED_FORMAT=csv scrapy crawl googlescholar -o $@
 
@@ -17,4 +20,5 @@ requirements:
 	FEED_FORMAT=json scrapy crawl googlescholar -o $@
 
 %.bib: %.csv
-	$(PYTHON_INTERPRETER) convert_to_bibtex.py $< $@
+	$(PYTHON_INTERPRETER) convert.py csv2bib $< $@
+

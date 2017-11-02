@@ -24,8 +24,8 @@ class GooglescholarSpider(scrapy.Spider):
         else:
             self.start = ''
         self.start_urls = [
-            'https://scholar.google.com/scholar?{}q={}&hl=en&as_sdt=0,5'.format(
-                self.start, self.query)
+            'https://scholar.google.com/scholar?{}q={}&hl=en&as_sdt=0,5'.
+            format(self.start, self.query)
         ]
 
     @staticmethod
@@ -34,7 +34,7 @@ class GooglescholarSpider(scrapy.Spider):
             i for i in article.xpath('h3//text()').extract()
             if i.strip() not in [
                 '[PDF]', '[CITATION]', '[C]', '[CITATION][C]', '[HTML]',
-                '[DOC]', '[DOC][DOC]'
+                '[DOC]', '[DOC][DOC]', '[BOOK][B]'
             ]
         ]
         return "".join(title_parts).strip()
