@@ -15,9 +15,9 @@ Features
 Installation
 ------------
 
-Install Python 3.x (not tested on Python 2) and
+Install Python 3.x (not tested on Python 2) and `pipenv`
 
-    make requirements
+    pipenv install
 
 Usage
 -----
