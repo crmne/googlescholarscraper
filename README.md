@@ -15,30 +15,46 @@ Features
 Installation
 ------------
 
-Install Python 3.x (not tested on Python 2) and `pipenv`
-
-    pipenv install
+```bash
+poetry install
+```
 
 Usage
 -----
 
-    export QUERY="your query here"
-    export START=900  # optional: to start at page 90
-    make <output filename>.csv  # or
-    make <output filename>.json  # or
-    make <output filename>.bib
+```bash
+poetry shell
+export QUERY="your query here"
+export START=900  # optional: to start at page 90
+make <output filename>.csv  # or
+make <output filename>.json  # or
+make <output filename>.bib
+```
 
 Example
 -------
 
-    export QUERY="author:einstein quantum theory"
-    unset START  # makes sure it starts from the beginning
-    make einstein_quantum.bib
+```bash
+export QUERY="author:einstein quantum theory"
+unset START  # makes sure it starts from the beginning
+make einstein_quantum.bib
+```
+
+Development
+-----------
+
+Before coding away, just:
+
+```bash
+poetry install
+poetry shell
+pre-commit install
+```
 
 License
 -------
 
-GoogleScholarScraper is using the standard [BSD license](http://opensource.org/licenses/BSD-2-Clause).
+GoogleScholarScraper is using the standard [BSD 2-Clause "Simplified" License](http://opensource.org/licenses/BSD-2-Clause).
 
 [Scrapy]: https://scrapy.org/
 [search tips]: http://www.otago.ac.nz/library/pdf/Google_Scholar_Tips.pdf
