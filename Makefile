@@ -9,4 +9,3 @@
 
 %.bib: %.csv
 	python convert.py csv2bib $< $@
-
