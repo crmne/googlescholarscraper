@@ -29,14 +29,13 @@ visualize = ["graphviz (>0.5.1)", "Twisted (>=16.1.1)"]
 
 [[package]]
 name = "bibtexparser"
-version = "1.2.0"
-description = "Bibtex parser for python 2.7 and 3.3 and newer"
+version = "1.3.0"
+description = "Bibtex parser for python 3"
 category = "main"
 optional = false
 python-versions = "*"
 
 [package.dependencies]
-future = ">=0.16.0"
 pyparsing = ">=2.0.3"
 
 [[package]]
@@ -151,14 +150,6 @@ python-versions = ">=3.7"
 [package.extras]
 docs = ["furo (>=2021.8.17b43)", "sphinx (>=4.1)", "sphinx-autodoc-typehints (>=1.12)"]
 testing = ["covdefaults (>=1.2.0)", "coverage (>=4)", "pytest (>=4)", "pytest-cov", "pytest-timeout (>=1.4.2)"]
-
-[[package]]
-name = "future"
-version = "0.18.2"
-description = "Clean single-source support for Python 3 and 2"
-category = "main"
-optional = false
-python-versions = ">=2.6, !=3.0.*, !=3.1.*, !=3.2.*"
 
 [[package]]
 name = "hyperlink"
@@ -651,7 +642,7 @@ testing = ["coverage (>=5.0.3)", "zope.event", "zope.testing"]
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.7,<3.10"
-content-hash = "7e96fdc80803829a21d75509a2e3434506f66336cd91366d02e273269dceb7b9"
+content-hash = "f1f870516258cd82875db4e5fd265ff110038f103015234a8540a88309e468be"
 
 [metadata.files]
 attrs = [
@@ -663,7 +654,8 @@ automat = [
     {file = "Automat-20.2.0.tar.gz", hash = "sha256:7979803c74610e11ef0c0d68a2942b152df52da55336e0c9d58daf1831cbdf33"},
 ]
 bibtexparser = [
-    {file = "bibtexparser-1.2.0.tar.gz", hash = "sha256:0f9ab94e3fc36ee2ee6a3713c5dd7320d4b6ee52bd66ecbab03c6b06675ae410"},
+    {file = "bibtexparser-1.3.0-py3-none-any.whl", hash = "sha256:d2886789566f2ecbecb5f44309d36ed96162530f29f0b0c07df11630adf17632"},
+    {file = "bibtexparser-1.3.0.tar.gz", hash = "sha256:971a0840700f5282d61b8c119cd4e208b8e546a91f9043ead4e440734fbf9f5e"},
 ]
 certifi = [
     {file = "certifi-2022.6.15-py3-none-any.whl", hash = "sha256:fe86415d55e84719d75f8b69414f6438ac3547d2078ab91b67e779ef69378412"},
@@ -776,9 +768,6 @@ distlib = [
 filelock = [
     {file = "filelock-3.7.1-py3-none-any.whl", hash = "sha256:37def7b658813cda163b56fc564cdc75e86d338246458c4c28ae84cabefa2404"},
     {file = "filelock-3.7.1.tar.gz", hash = "sha256:3a0fd85166ad9dbab54c9aec96737b744106dc5f15c0b09a6744a445299fcf04"},
-]
-future = [
-    {file = "future-0.18.2.tar.gz", hash = "sha256:b1bead90b70cf6ec3f0710ae53a525360fa360d306a86583adc6bf83a4db537d"},
 ]
 hyperlink = [
     {file = "hyperlink-21.0.0-py2.py3-none-any.whl", hash = "sha256:e6b14c37ecb73e89c77d78cdb4c2cc8f3fb59a885c5b3f819ff4ed80f25af1b4"},
